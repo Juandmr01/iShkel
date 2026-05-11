@@ -4,24 +4,7 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import { useCart } from '@/context/CartContext';
-
-type ShopifyImage = { url: string; altText?: string | null };
-type ShopifyVariant = {
-  id: string;
-  title: string;
-  availableForSale: boolean;
-  price: { amount: string; currencyCode: string };
-  selectedOptions?: { name: string; value: string }[];
-};
-type ShopifyProduct = {
-  id: string;
-  title: string;
-  description?: string;
-  descriptionHtml?: string;
-  images: { nodes: ShopifyImage[] };
-  variants: { nodes: ShopifyVariant[] };
-  options?: { name: string; values: string[] }[];
-};
+import type { ShopifyProduct } from '@/lib/shopify';
 
 interface ProductShowroomProps {
   product: ShopifyProduct;
@@ -44,7 +27,7 @@ const COLOR_SWATCHES: Record<string, string> = {
 
 export default function ProductShowroom({ product, formattedPrice }: ProductShowroomProps) {
   const images = product.images.nodes;
-  const variants = product.variants.nodes;
+  const variants = product.variants?.nodes ?? [];
   const [activeImage, setActiveImage] = useState(0);
   const [activeVariantId, setActiveVariantId] = useState(variants[0]?.id);
   const [isAdding, setIsAdding] = useState(false);

@@ -1,5 +1,4 @@
 // components/products/PDPHero.tsx
-import { a, section } from 'framer-motion/m';
 import Image from 'next/image';
 
 interface PDPHeroProps {
@@ -38,10 +37,10 @@ export default function PDPHero({ title, heroImage, formattedPrice }: PDPHeroPro
             <p className="text-white text-[15px] sm:text-[18px] lg:text-[20px] font-neue">
               Desde {formattedPrice}
             </p>
-            
+            <a
               href="#productos"
               className="bg-white text-[#191817] text-[14px] sm:text-[14.5px] font-medium font-neue px-6 sm:px-8 h-10 inline-flex items-center justify-center rounded-[15px] tracking-[0.1px] hover:bg-white/90 active:scale-[0.98] transition-all duration-200"
-            <a>
+            >
               Comprar ahora
             </a>
           </div>

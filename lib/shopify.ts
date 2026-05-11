@@ -18,15 +18,31 @@ interface ShopifyPriceRange {
   };
 }
 
+interface ShopifyVariant {
+  id: string;
+  title: string;
+  availableForSale: boolean;
+  price: {
+    amount: string;
+    currencyCode: string;
+  };
+  selectedOptions?: { name: string; value: string }[];
+}
+
 export interface ShopifyProduct {
   id: string;
   title: string;
   handle: string;
   description: string;
+  descriptionHtml?: string;
   priceRange: ShopifyPriceRange;
   images: {
     nodes: ShopifyImage[];
   };
+  variants?: {
+    nodes: ShopifyVariant[];
+  };
+  options?: { name: string; values: string[] }[];
 }
 
 interface ShopifyProductsResponse {
@@ -191,7 +207,7 @@ export async function getProductByHandle(handle: string): Promise<ShopifyProduct
   }
 }
 
-export async function getProductWithVariants(handle: string) {
+export async function getProductWithVariants(handle: string): Promise<ShopifyProduct | null> {
   const query = `
     query getProductWithVariants($handle: String!) {
       productByHandle(handle: $handle) {
@@ -199,6 +215,7 @@ export async function getProductWithVariants(handle: string) {
         title
         handle
         description
+        descriptionHtml
         priceRange {
           minVariantPrice {
             amount
@@ -211,6 +228,10 @@ export async function getProductWithVariants(handle: string) {
             altText
           }
         }
+        options {
+          name
+          values
+        }
         variants(first: 10) {
           nodes {
             id
@@ -220,6 +241,10 @@ export async function getProductWithVariants(handle: string) {
               amount
               currencyCode
             }
+            selectedOptions {
+              name
+              value
+            }
           }
         }
       }
@@ -227,7 +252,7 @@ export async function getProductWithVariants(handle: string) {
   `;
 
   try {
-    const response = await shopifyFetch<any>({
+    const response = await shopifyFetch<ShopifyProductResponse>({
       query,
       variables: { handle },
     });

@@ -1,6 +1,6 @@
 // app/products/[handle]/page.tsx
 import { notFound } from 'next/navigation';
-import { getProductByHandle } from '@/lib/shopify';
+import { getProductWithVariants } from '@/lib/shopify';
 import Navbar from '@/components/shared/Navbar';
 import Footer from '@/components/shared/Footer';
 import PDPHero from '@/components/products/PDPHero';
@@ -16,7 +16,7 @@ type PageProps = {
 
 export async function generateMetadata({ params }: PageProps) {
   const { handle } = await params;
-  const product = await getProductByHandle(handle);
+  const product = await getProductWithVariants(handle);
   if (!product) return { title: 'Producto no encontrado | iShkel' };
 
   return {
@@ -27,11 +27,10 @@ export async function generateMetadata({ params }: PageProps) {
 
 export default async function ProductPage({ params }: PageProps) {
   const { handle } = await params;
-  const product = await getProductByHandle(handle);
+  const product = await getProductWithVariants(handle);
 
-  if (!product) notFound();
+  if (!product) return notFound();
 
-  // Normalize Shopify Storefront API shape
   const variant = product.variants?.nodes?.[0];
   const price = variant?.price ?? product.priceRange?.minVariantPrice;
   const heroImage = product.images?.nodes?.[0]?.url ?? '/Images_Icons/homePageImg.jpeg';
@@ -47,19 +46,14 @@ export default async function ProductPage({ params }: PageProps) {
   return (
     <main className="bg-white font-neue antialiased overflow-x-hidden">
       <Navbar />
-
       <PDPHero
         title={product.title}
         heroImage={heroImage}
         formattedPrice={formattedPrice}
       />
-
       <ProductShowroom product={product} formattedPrice={formattedPrice} />
-
       <SeguridadDisenoSplit />
-
       <Footer />
-
       <StickyPriceBar
         title={product.title}
         formattedPrice={formattedPrice}
