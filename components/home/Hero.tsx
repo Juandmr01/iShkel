@@ -26,13 +26,14 @@ export default function Hero() {
             className="object-cover object-center"
             priority
             quality={90}
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-black/40" />
         </div>
 
         <div className="relative z-10 h-full flex flex-col items-center justify-center px-6">
           <h1
-            className="font-neue font-medium text-[clamp(3rem,10vw,120px)] leading-[0.95] tracking-[-0.02em] text-center"
+            className="font-neue font-medium text-[clamp(2.4rem,11vw,120px)] leading-[0.95] tracking-[-0.02em] text-center"
             style={{
               background: 'linear-gradient(90deg, #626262 2.88%, #F2F2F2 73.08%)',
               WebkitBackgroundClip: 'text',
@@ -43,18 +44,18 @@ export default function Hero() {
             iShkel Serie Fx
           </h1>
 
-          <p className="mt-2 text-white text-[20px] sm:text-[30px] font-neue font-medium text-center">
+          <p className="mt-2 text-white text-[16px] sm:text-[30px] font-neue font-medium text-center">
             Protege lo que mas te importa con iShkel
           </p>
 
-          <div className="flex items-center gap-5 mt-3">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-5 mt-5 w-full max-w-85 sm:max-w-none sm:w-auto">
             <a href="#productos" className="relative group">
               <div className="absolute inset-0 rounded-[15px] bg-linear-to-r from-[#3b3b3b] to-[#a1a1a1] blur-[2px] opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
-              <div className="relative rounded-[15px] bg-linear-to-r from-[#3b3b3b] to-[#a1a1a1] p-0.5 w-50 h-12">
+              <div className="relative rounded-[15px] bg-linear-to-r from-[#3b3b3b] to-[#a1a1a1] p-0.5 w-full sm:w-50 h-12">
                 <div className="rounded-[13px] bg-[#070707] w-full h-full flex items-center justify-center relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-15 h-7.5 bg-white/10 blur-[10px] rounded-full" />
                   <div className="absolute bottom-0 left-0 w-10 h-7.5 bg-white/5 blur-[10px] rounded-full" />
-                  <span className="relative font-neue font-normal text-[20px] text-white">
+                  <span className="relative font-neue font-normal text-[18px] sm:text-[20px] text-white">
                     Protegete Hoy!
                   </span>
                 </div>
@@ -62,7 +63,7 @@ export default function Hero() {
             </a>
             <a
               href="#saber-mas"
-              className="border-2 border-[#f2f2f2] text-white font-neue font-normal text-[20px] px-10 py-3.5 rounded-[15px] hover:bg-white/5 transition-all duration-300 w-[200px] h-[48px] flex items-center justify-center"
+              className="border-2 border-[#f2f2f2] text-white font-neue font-normal text-[18px] sm:text-[20px] rounded-[15px] hover:bg-white/5 transition-all duration-300 w-full sm:w-50 h-12 flex items-center justify-center"
             >
               Saber Mas
             </a>

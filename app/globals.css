@@ -95,3 +95,25 @@ body {
   background-clip: text;
   color: transparent;
 }
+@layer utilities {
+  /* Hide the text that overflows the bounding box */
+  .roll-container {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    height: 22px; /* Matches your text line-height */
+    line-height: 22px;
+  }
+
+  /* The wrapper containing both words */
+  .roll-text {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  /* Slide both words up by 50% (the height of one word) on hover */
+  .group:hover .roll-text {
+    transform: translateY(-50%);
+  }
+}

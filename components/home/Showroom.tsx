@@ -127,12 +127,12 @@ export default function Showroom({ product }: ShowroomProps) {
 
   return (
     <section className="bg-[#f2f2f2] w-full py-16 overflow-hidden">
-      <div className="max-w-[1440px] mx-auto px-8 lg:px-16">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-16">
         <div className="flex flex-col lg:flex-row items-start gap-0">
 
           {/* Left - Product Image Carousel */}
           <div className="w-full lg:w-[58%] relative">
-            <div className="relative rounded-[15px] overflow-hidden bg-white h-[650px] w-[717px] mt-[50px]">
+            <div className="relative rounded-[15px] overflow-hidden bg-white h-80 sm:h-120 lg:h-162.5 w-full lg:w-179.25 mt-0 lg:mt-12.5">
               {/* Main Image */}
               {images.length > 0 && (
                 <Image

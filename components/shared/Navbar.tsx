@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { useCart } from '@/context/CartContext';
 
-export default function Navbar() {
+export default function Navbar({ dark = false }: { dark?: boolean }) {
   const [scrolled, setScrolled] = useState(false);
   const { openCart, cartCount, setCartCount } = useCart();
 
@@ -47,11 +47,15 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
         scrolled
-          ? 'bg-white shadow-[0_2px_24px_rgba(0,0,0,0.08)]'
-          : 'bg-gradient-to-b from-black/60 to-transparent'
+          ? dark
+            ? 'bg-black shadow-[0_2px_24px_rgba(0,0,0,0.4)]'
+            : 'bg-white shadow-[0_2px_24px_rgba(0,0,0,0.08)]'
+          : dark
+            ? 'bg-white shadow-[0_2px_24px_rgba(0,0,0,0.08)]'
+            : 'bg-linear-to-b from-black/60 to-transparent'
       }`}
     >
-      <div className="max-w-[1800px] mx-auto px-8 lg:px-12 h-20 flex items-center justify-between">
+      <div className="max-w-450 mx-auto px-8 lg:px-12 h-20 flex items-center justify-between">
 
         {/* Logo */}
         <div className="flex items-center gap-3">
@@ -61,7 +65,7 @@ export default function Navbar() {
               alt="iShkel Logo"
               width={120}
               height={120}
-              className={`transition-all duration-500 ${scrolled ? 'invert' : ''}`}
+              className={`transition-all duration-500 ${scrolled !== dark ? 'invert' : ''}`}
             />
           </Link>
         </div>
@@ -71,7 +75,7 @@ export default function Navbar() {
           <Link
             href="/products"
             className={`text-[15px] font-neue transition-colors duration-500 ${
-              scrolled ? 'text-[#070707] hover:text-[#070707]/50' : 'text-white hover:text-white/70'
+              scrolled !== dark ? 'text-[#070707] hover:text-[#070707]/50' : 'text-white hover:text-white/70'
             }`}
           >
             Productos
@@ -79,15 +83,15 @@ export default function Navbar() {
           <Link
             href="/servicios"
             className={`text-[15px] font-neue transition-colors duration-500 ${
-              scrolled ? 'text-[#070707] hover:text-[#070707]/50' : 'text-white hover:text-white/70'
+              scrolled !== dark ? 'text-[#070707] hover:text-[#070707]/50' : 'text-white hover:text-white/70'
             }`}
           >
             Servicios
           </Link>
           <Link
-            href="/soporte"
+            href="/Soporte"
             className={`text-[15px] font-neue transition-colors duration-500 ${
-              scrolled ? 'text-[#070707] hover:text-[#070707]/50' : 'text-white hover:text-white/70'
+              scrolled !== dark ? 'text-[#070707] hover:text-[#070707]/50' : 'text-white hover:text-white/70'
             }`}
           >
             Soporte
@@ -95,7 +99,7 @@ export default function Navbar() {
           <Link
             href="/pro"
             className={`text-[15px] font-neue transition-colors duration-500 ${
-              scrolled ? 'text-[#070707] hover:text-[#070707]/50' : 'text-white hover:text-white/70'
+              scrolled !== dark ? 'text-[#070707] hover:text-[#070707]/50' : 'text-white hover:text-white/70'
             }`}
           >
             iShkel Pro (Constructores)
@@ -111,7 +115,7 @@ export default function Navbar() {
               alt="Account Icon"
               width={32}
               height={32}
-              className={`transition-all duration-500 ${scrolled ? 'invert' : 'opacity-70'}`}
+              className={`transition-all duration-500 ${scrolled !== dark ? 'invert' : 'opacity-70'}`}
             />
           </button>
 
@@ -131,22 +135,22 @@ export default function Navbar() {
                 className={`transition-all duration-500 ${scrolled ? '' : 'opacity-90'}`}
               >
                 <mask id="mask0_cart_filled" style={{ maskType: 'alpha' } as React.CSSProperties} maskUnits="userSpaceOnUse" x="5" y="17" width="40" height="25">
-                  <path d="M10.0532 18.75L13.1656 36.9792H36.8228L40 18.75H43.75V40.625H6.25V18.75H10.0532Z" fill={scrolled ? '#191817' : 'white'} stroke={scrolled ? '#191817' : 'white'} strokeWidth="1.6"/>
+                  <path d="M10.0532 18.75L13.1656 36.9792H36.8228L40 18.75H43.75V40.625H6.25V18.75H10.0532Z" fill={scrolled !== dark ? '#191817' : 'white'} stroke={scrolled !== dark ? '#191817' : 'white'} strokeWidth="1.6"/>
                 </mask>
                 <g mask="url(#mask0_cart_filled)">
-                  <path d="M13.5589 39.375L10.8506 23.125H39.1494L36.4411 39.375H13.5589Z" stroke={scrolled ? '#191817' : 'white'} strokeWidth="1.6"/>
+                  <path d="M13.5589 39.375L10.8506 23.125H39.1494L36.4411 39.375H13.5589Z" stroke={scrolled !== dark ? '#191817' : 'white'} strokeWidth="1.6"/>
                 </g>
                 <mask id="mask1_cart_filled" style={{ maskType: 'alpha' } as React.CSSProperties} maskUnits="userSpaceOnUse" x="9" y="9" width="32" height="10">
-                  <path d="M40.625 9.375H9.375V18.75H40.625V9.375Z" fill={scrolled ? '#191817' : 'white'}/>
+                  <path d="M40.625 9.375H9.375V18.75H40.625V9.375Z" fill={scrolled !== dark ? '#191817' : 'white'}/>
                 </mask>
                 <g mask="url(#mask1_cart_filled)">
-                  <path d="M25 26.5625C29.3147 26.5625 32.8125 23.0647 32.8125 18.75C32.8125 14.4353 29.3147 10.9375 25 10.9375C20.6853 10.9375 17.1875 14.4353 17.1875 18.75C17.1875 23.0647 20.6853 26.5625 25 26.5625Z" stroke={scrolled ? '#191817' : 'white'} strokeWidth="1.6"/>
+                  <path d="M25 26.5625C29.3147 26.5625 32.8125 23.0647 32.8125 18.75C32.8125 14.4353 29.3147 10.9375 25 10.9375C20.6853 10.9375 17.1875 14.4353 17.1875 18.75C17.1875 23.0647 20.6853 26.5625 25 26.5625Z" stroke={scrolled !== dark ? '#191817' : 'white'} strokeWidth="1.6"/>
                 </g>
                 <circle cx="36" cy="22" r="5" fill="#E85D3F"/>
-                <rect x="19" y="26" width="12" height="2" rx="1" fill={scrolled ? '#191817' : 'white'}/>
-                <rect x="19" y="29" width="12" height="2" rx="1" fill={scrolled ? '#191817' : 'white'}/>
-                <rect x="20" y="32" width="10" height="2" rx="1" fill={scrolled ? '#191817' : 'white'}/>
-                <rect x="18" y="26" width="15" height="2" rx="1" fill={scrolled ? '#191817' : 'white'}/>
+                <rect x="19" y="26" width="12" height="2" rx="1" fill={scrolled !== dark ? '#191817' : 'white'}/>
+                <rect x="19" y="29" width="12" height="2" rx="1" fill={scrolled !== dark ? '#191817' : 'white'}/>
+                <rect x="20" y="32" width="10" height="2" rx="1" fill={scrolled !== dark ? '#191817' : 'white'}/>
+                <rect x="18" y="26" width="15" height="2" rx="1" fill={scrolled !== dark ? '#191817' : 'white'}/>
               </svg>
             ) : (
               /* Empty cart icon */
@@ -155,7 +159,7 @@ export default function Navbar() {
                 alt="Cart Icon"
                 width={32}
                 height={32}
-                className={`transition-all duration-500 ${scrolled ? 'invert' : 'opacity-70'}`}
+                className={`transition-all duration-500 ${scrolled !== dark ? 'invert' : 'opacity-70'}`}
               />
             )}
           </button>
@@ -164,7 +168,7 @@ export default function Navbar() {
         {/* Mobile Menu Button */}
         <button
           className={`lg:hidden transition-colors duration-500 ${
-            scrolled ? 'text-[#070707]' : 'text-white'
+            scrolled !== dark ? 'text-[#070707]' : 'text-white'
           }`}
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">

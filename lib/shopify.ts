@@ -45,6 +45,37 @@ interface ShopifyProductResponse {
   errors?: Array<{ message: string }>;
 }
 
+// ============================================================
+// Types for the products listing page (getAllProducts)
+// ============================================================
+
+export interface ShopifyAllProductsResponse {
+  data: {
+    products: {
+      nodes: Array<{
+        id: string;
+        handle: string;
+        title: string;
+        tags: string[];
+        featuredImage: { url: string; altText: string | null } | null;
+        images: { nodes: { url: string; altText: string | null }[] };
+        priceRange: {
+          minVariantPrice: { amount: string; currencyCode: string };
+        };
+        options: { name: string; values: string[] }[];
+      }>;
+    };
+  };
+  errors?: Array<{ message: string }>;
+}
+
+export type ShopifyListProduct =
+  ShopifyAllProductsResponse['data']['products']['nodes'][number];
+
+// ============================================================
+// Core fetch helper
+// ============================================================
+
 async function shopifyFetch<T>({ query, variables = {} }: ShopifyFetchParams): Promise<T> {
   const endpoint = `https://${domain}/api/2024-01/graphql.json`;
 
@@ -65,6 +96,10 @@ async function shopifyFetch<T>({ query, variables = {} }: ShopifyFetchParams): P
 
   return result.json();
 }
+
+// ============================================================
+// Product queries
+// ============================================================
 
 export async function getProducts(): Promise<ShopifyProduct[]> {
   const query = `
@@ -207,6 +242,60 @@ export async function getProductWithVariants(handle: string) {
   }
 }
 
+export async function getAllProducts(): Promise<ShopifyListProduct[]> {
+  const query = `
+    query GetAllProducts($first: Int!) {
+      products(first: $first) {
+        nodes {
+          id
+          handle
+          title
+          tags
+          featuredImage {
+            url
+            altText
+          }
+          images(first: 1) {
+            nodes {
+              url
+              altText
+            }
+          }
+          priceRange {
+            minVariantPrice {
+              amount
+              currencyCode
+            }
+          }
+          options {
+            name
+            values
+          }
+        }
+      }
+    }
+  `;
+
+  try {
+    const response = await shopifyFetch<ShopifyAllProductsResponse>({
+      query,
+      variables: { first: 20 },
+    });
+    if (response.errors) {
+      console.error('GraphQL errors:', response.errors);
+      return [];
+    }
+    return response.data?.products?.nodes ?? [];
+  } catch (error) {
+    console.error('Error in getAllProducts:', error);
+    return [];
+  }
+}
+
+// ============================================================
+// Cart mutations
+// ============================================================
+
 export async function createCart(variantId: string, quantity: number = 1) {
   const query = `
     mutation createCart($variantId: ID!, $quantity: Int!) {
@@ -298,7 +387,6 @@ export async function addToCart(cartId: string, variantId: string, quantity: num
       }
     }
   `;
-
   try {
     const response = await shopifyFetch<any>({
       query,
@@ -314,8 +402,6 @@ export async function addToCart(cartId: string, variantId: string, quantity: num
     return null;
   }
 }
-
-// ✅ getCart — correctly closed, images included
 export async function getCart(cartId: string) {
   const query = `
     query getCart($cartId: ID!) {
@@ -372,9 +458,7 @@ export async function getCart(cartId: string) {
     console.error('Error in getCart:', error);
     return null;
   }
-} // ← getCart ends here
-
-// ✅ updateCartLine — now a proper top-level export
+}
 export async function updateCartLine(cartId: string, lineId: string, quantity: number) {
   if (quantity === 0) {
     const query = `

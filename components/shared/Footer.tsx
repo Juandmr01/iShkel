@@ -11,7 +11,7 @@ const ProductsFooter = () => (
           <h3 className="text-white text-[22.6px] font-light tracking-[-1.56px] mb-4">
             iShkel
           </h3>
-          <p className="text-white/70 text-[16px] leading-[24px] tracking-[-0.64px] mb-6">
+          <p className="text-white/70 text-[16px]  tracking-[-0.64px] mb-6">
             Especialistas en cerraduras inteligentes premium con instalación certificada en puertas tradicionales y de alta seguridad. Líder en Colombia desde 2018.
           </p>
           <p className="text-white/70 text-[16px] tracking-[-0.64px]">

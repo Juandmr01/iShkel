@@ -4,9 +4,9 @@ import Image from 'next/image';
 import { testimonials } from '@/lib/data';
 
 const heightClasses = {
-  tall: 'h-[280px] sm:h-[300px] lg:h-[302px]',
-  medium: 'h-[240px] sm:h-[260px] lg:h-[277px]',
-  short: 'h-[200px] sm:h-[220px] lg:h-[240px]',
+  tall: 'h-[200px] sm:h-[260px] lg:h-[302px]',
+  medium: 'h-[170px] sm:h-[220px] lg:h-[277px]',
+  short: 'h-[145px] sm:h-[190px] lg:h-[240px]',
 };
 
 // Offset classes — stagger only on desktop
@@ -32,7 +32,7 @@ export default function TestimonialSection() {
   const col2 = [testimonials[1], testimonials[3]];
 
   return (
-    <section className="w-full bg-[#f2f2f2] py-12 md:py-16 lg:py-20 px-4 overflow-hidden">
+    <section className="w-full bg-[#f2f2f2] py-8 md:py-16 lg:py-20 px-4 overflow-hidden">
       <div className="relative max-w-[1346px] mx-auto bg-white rounded-[20px] md:rounded-[30px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] p-6 md:p-10 lg:p-12">
 
         {/* Mobile: 2-column masonry grid */}
@@ -57,7 +57,7 @@ export default function TestimonialSection() {
           </div>
 
           {/* Column 2 — offset down for stagger */}
-          <div className="flex flex-col gap-3 mt-8">
+          <div className="flex flex-col gap-3 mt-5 sm:mt-8">
             {col2.map((card) => (
               <div
                 key={card.id}
