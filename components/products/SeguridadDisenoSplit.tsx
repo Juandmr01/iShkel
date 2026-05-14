@@ -3,58 +3,72 @@ import Image from 'next/image';
 
 export default function SeguridadDisenoSplit() {
   return (
-    <section className="bg-[#f2f2f2] pb-16 lg:pb-24">
-      <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-14">
-        {/* First split */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-8 lg:gap-20 items-center">
-          <div className="relative aspect-[555/500] w-full rounded-[15px] bg-[#d9d9d9] overflow-hidden">
+    <section id="seguridad"  className="bg-[#f2f2f2] py-12 sm:py-16 lg:py-20">
+      <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-20">
+        {/* Row 1: Square image + heading top-right */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+          {/* Square image */}
+          <div className="relative aspect-square w-full max-w-[555px] rounded-[15px] bg-[#d9d9d9] overflow-hidden">
             <Image
               src="/Images_Icons/seguridad-diseno.jpg"
               alt="Seguridad y diseño iShkel"
               fill
               className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 55vw"
+              sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </div>
 
-          <div>
+          {/* Heading + paragraph (top-aligned, sits at top of row) */}
+          <div className="lg:pt-12">
             <h2
-              className="text-[#070707] text-[28px] sm:text-[32px] lg:text-[36px] font-medium font-neue tracking-tight leading-[1.1]"
+              className="text-[#070707] text-[26px] sm:text-[30px] lg:text-[34px] font-normal font-neue tracking-tight leading-[1.15]"
               style={{ textWrap: 'balance' } as React.CSSProperties}
             >
-              Seguridad y diseño
+              Seguridad, y diseño
             </h2>
             <p
-              className="mt-5 text-[#070707] text-[16px] sm:text-[18px] lg:text-[20px] font-medium font-neue leading-[1.4]"
+              className="mt-4 lg:mt-5 text-[#070707] text-[15px] sm:text-[16px] lg:text-[17px] font-medium font-neue leading-[1.45] max-w-[420px]"
               style={{ textWrap: 'pretty' } as React.CSSProperties}
             >
               Protección inteligente que complementa tu hogar. Nuestras cerraduras
-              combinan tecnología de punta con acabados premium para una seguridad que
-              se ve tan bien como funciona.
+              combinan tecnología de punta con acabados premium para una seguridad
+              que se ve tan bien como funciona.
             </p>
           </div>
         </div>
 
-        {/* Second split */}
-        <div className="mt-12 lg:mt-20 grid grid-cols-1 lg:grid-cols-[1.33fr_1fr] gap-8 lg:gap-12 items-stretch">
-          <div className="relative aspect-[680/672] w-full rounded-[15px] bg-[#d9d9d9] overflow-hidden">
+        {/* Row 2: Two vertical images, second one has caption below */}
+        <div className="mt-10 sm:mt-14 lg:mt-20 grid grid-cols-1 lg:grid-cols-[1.33fr_1fr] gap-8 lg:gap-10 items-start">
+          {/* Left: tall image */}
+          <div className="relative aspect-[680/810] w-full rounded-[15px] bg-[#d9d9d9] overflow-hidden">
             <Image
-              src="/Images_Icons/material-detail.jpg"
+              src="/Images_Icons/material-detail-1.jpg"
               alt="Detalle de materiales iShkel"
               fill
               className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 60vw"
+              sizes="(max-width: 1024px) 100vw, 56vw"
             />
           </div>
 
-          <div className="bg-[#d9d9d9] rounded-[15px] flex flex-col justify-end p-8 sm:p-10 lg:p-12 min-h-[400px]">
+          {/* Right: image + caption below */}
+          <div className="flex flex-col gap-5 lg:gap-6">
+            <div className="relative aspect-[510/672] w-full rounded-[15px] bg-[#d9d9d9] overflow-hidden">
+              <Image
+                src="/Images_Icons/material-detail-2.jpg"
+                alt="Acabados premium iShkel"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 40vw"
+              />
+            </div>
+
             <p
-              className="text-black text-[18px] sm:text-[20px] lg:text-[22px] font-medium font-neue leading-[1.4]"
+              className="text-black text-[15px] sm:text-[16px] lg:text-[17px] font-medium font-neue leading-[1.45] max-w-[460px]"
               style={{ textWrap: 'pretty' } as React.CSSProperties}
             >
-              &ldquo;Fabricadas con aleación de zinc de grado aeronáutico y acabados en
-              acero inoxidable 304. Resistentes a la corrosión, impactos y temperaturas
-              extremas. Diseño que perdura.&rdquo;
+              &ldquo;Fabricadas con aleación de zinc de grado aeronáutico y acabados
+              en acero inoxidable 304. Resistentes a la corrosión, impactos y
+              temperaturas extremas. Diseño que perdura.&rdquo;
             </p>
           </div>
         </div>

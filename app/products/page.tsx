@@ -7,8 +7,8 @@ import Navbar from '@/components/shared/Navbar';
 const products = [
   {
     id: '1',
-    handle: 'fx-2026',
-    title: 'FX 2026',
+    handle: 'cerradura-fx-321312',
+    title: 'cerradura-fx-321312',
     price: '2,00,300',
     image: '/ProductsImages/iShkelSampleFX 1.png',
     isNew: true,

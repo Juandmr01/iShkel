@@ -73,6 +73,14 @@ export default function Navbar({ dark = false }: { dark?: boolean }) {
         {/* Center Nav Links */}
         <div className="hidden lg:flex items-center gap-10 pt-2">
           <Link
+            href="/"
+            className={`text-[15px] font-neue transition-colors duration-500 ${
+              scrolled !== dark ? 'text-[#070707] hover:text-[#070707]/50' : 'text-white hover:text-white/70'
+            }`}
+          >
+            Home
+          </Link>
+          <Link
             href="/products"
             className={`text-[15px] font-neue transition-colors duration-500 ${
               scrolled !== dark ? 'text-[#070707] hover:text-[#070707]/50' : 'text-white hover:text-white/70'
@@ -80,14 +88,7 @@ export default function Navbar({ dark = false }: { dark?: boolean }) {
           >
             Productos
           </Link>
-          <Link
-            href="/servicios"
-            className={`text-[15px] font-neue transition-colors duration-500 ${
-              scrolled !== dark ? 'text-[#070707] hover:text-[#070707]/50' : 'text-white hover:text-white/70'
-            }`}
-          >
-            Servicios
-          </Link>
+          
           <Link
             href="/Soporte"
             className={`text-[15px] font-neue transition-colors duration-500 ${

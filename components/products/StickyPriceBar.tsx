@@ -26,10 +26,10 @@ export default function StickyPriceBar({
       if (!hero || !showroom) return;
 
       const heroBottom = hero.getBoundingClientRect().bottom;
-      const showroomBottom = showroom.getBoundingClientRect().bottom;
+      const seguridadBottom  = showroom.getBoundingClientRect().bottom;
 
       // Show after hero scrolls out, hide after showroom scrolls out (avoid showing in footer)
-      setVisible(heroBottom < 0 && showroomBottom > 200);
+      setVisible(heroBottom < 0 && seguridadBottom  > -800);
     };
 
     window.addEventListener('scroll', onScroll, { passive: true });

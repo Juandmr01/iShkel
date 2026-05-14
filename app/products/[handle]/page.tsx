@@ -7,6 +7,7 @@ import PDPHero from '@/components/products/PDPHero';
 import ProductShowroom from '@/components/products/ProductShowroom';
 import SeguridadDisenoSplit from '@/components/products/SeguridadDisenoSplit';
 import StickyPriceBar from '@/components/products/StickyPriceBar';
+import AutoridadProduct from '@/components/products/AutoridadProduct';
 
 export const revalidate = 60;
 
@@ -33,8 +34,7 @@ export default async function ProductPage({ params }: PageProps) {
 
   const variant = product.variants?.nodes?.[0];
   const price = variant?.price ?? product.priceRange?.minVariantPrice;
-  const heroImage = product.images?.nodes?.[0]?.url ?? '/Images_Icons/homePageImg.jpeg';
-
+ const heroImage = '/Images_Icons/MainImg.png';
   const formattedPrice = price
     ? new Intl.NumberFormat('es-CO', {
         style: 'currency',
@@ -53,6 +53,7 @@ export default async function ProductPage({ params }: PageProps) {
       />
       <ProductShowroom product={product} formattedPrice={formattedPrice} />
       <SeguridadDisenoSplit />
+      <AutoridadProduct /> 
       <Footer />
       <StickyPriceBar
         title={product.title}
