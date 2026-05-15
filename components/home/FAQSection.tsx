@@ -140,7 +140,7 @@ export default function FAQSection() {
           <p className="text-black text-base mb-4">
             No encontraste tu pregunta aqui? Click abajo
           </p>
-          <button className="px-12 md:px-16 py-3 md:py-4 border-2 border-[#191817] rounded-[15px] text-[#191817] text-sm md:text-[14.5px] font-medium hover:bg-[#191817] hover:text-white transition-colors duration-300">
+          <button className="px-12 md:px-16 py-3 md:py-4 border-2 border-[#191817] rounded-[15px] text-[#191817] text-sm md:text-[16px] font-medium hover:bg-[#191817] hover:text-white transition-colors duration-300">
             Soporte 24/7
           </button>
         </div>

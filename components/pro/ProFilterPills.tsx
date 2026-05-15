@@ -13,15 +13,13 @@ export default function ProFilterPills({ pills }: { pills: Pill[] }) {
     const target = document.getElementById(id);
     if (!target) return;
 
-    const offset = 100; // navbar clearance
+    const offset = 100;
     const top = target.getBoundingClientRect().top + window.scrollY - offset;
     window.scrollTo({ top, behavior: 'smooth' });
   };
 
   return (
-    <div
-      className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 max-w-[900px] mx-auto"
-    >
+    <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 max-w-[900px] mx-auto">
       {pills.map((pill) => {
         const isActive = activeId === pill.id;
         return (
