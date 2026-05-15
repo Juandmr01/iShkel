@@ -207,7 +207,7 @@ export async function getProductByHandle(handle: string): Promise<ShopifyProduct
   }
 }
 
-export async function getProductWithVariants(handle: string): Promise<ShopifyProduct | null> {
+export async function getProductWithVariants(handle: string) {
   const query = `
     query getProductWithVariants($handle: String!) {
       productByHandle(handle: $handle) {
@@ -215,24 +215,23 @@ export async function getProductWithVariants(handle: string): Promise<ShopifyPro
         title
         handle
         description
-        descriptionHtml
         priceRange {
           minVariantPrice {
             amount
             currencyCode
           }
         }
-        images(first: 5) {
+        images(first: 10) {
           nodes {
             url
             altText
           }
         }
-        options {
+        options {              
           name
           values
         }
-        variants(first: 10) {
+        variants(first: 20) {
           nodes {
             id
             title
@@ -241,7 +240,7 @@ export async function getProductWithVariants(handle: string): Promise<ShopifyPro
               amount
               currencyCode
             }
-            selectedOptions {
+            selectedOptions {   
               name
               value
             }
@@ -252,7 +251,7 @@ export async function getProductWithVariants(handle: string): Promise<ShopifyPro
   `;
 
   try {
-    const response = await shopifyFetch<ShopifyProductResponse>({
+    const response = await shopifyFetch<any>({
       query,
       variables: { handle },
     });
@@ -266,7 +265,6 @@ export async function getProductWithVariants(handle: string): Promise<ShopifyPro
     return null;
   }
 }
-
 export async function getAllProducts(): Promise<ShopifyListProduct[]> {
   const query = `
     query GetAllProducts($first: Int!) {

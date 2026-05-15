@@ -140,7 +140,7 @@ export default function AutoridadSection() {
             {/* Bottom Right */}
             <div className="relative h-[250px] sm:h-[300px] md:h-[400px] lg:h-130 rounded-[20px] overflow-hidden group">
               <Image
-                src="/Images_Icons/Autoridad-ProblemasTecnicos.png"
+                src="/Images_Icons/PorblemasTecnicos.png"
                 alt="iShkel support - Soporte 24/7"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"

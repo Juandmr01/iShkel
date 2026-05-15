@@ -8,6 +8,8 @@ import ProductShowroom from '@/components/products/ProductShowroom';
 import SeguridadDisenoSplit from '@/components/products/SeguridadDisenoSplit';
 import StickyPriceBar from '@/components/products/StickyPriceBar';
 import AutoridadProduct from '@/components/products/AutoridadProduct';
+import TestimonialSection from '@/components/home/TestimonialSection';
+import FAQSection from '@/components/home/FAQSection';
 
 export const revalidate = 60;
 
@@ -54,12 +56,14 @@ export default async function ProductPage({ params }: PageProps) {
       <ProductShowroom product={product} formattedPrice={formattedPrice} />
       <SeguridadDisenoSplit />
       <AutoridadProduct /> 
-      <Footer />
       <StickyPriceBar
         title={product.title}
         formattedPrice={formattedPrice}
         variantId={variant?.id}
       />
+      <TestimonialSection />
+      <FAQSection />
+      <Footer />
     </main>
   );
 }
