@@ -278,7 +278,7 @@ const activeVariant = useMemo(() => {
               <div className="flex items-center justify-between py-[20px] border-b border-[#191817]">
                 <div className="flex items-center gap-2 overflow-hidden">
                   <span className="font-neue font-normal text-[13px] text-[#9a9a9a]">
-                    Material:
+                    Instalado en:
                   </span>
                   <span
                     key={`material-${selectedMaterial}`}

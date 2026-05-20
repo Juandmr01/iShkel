@@ -9,6 +9,9 @@ const marqueeItems = [...brands, ...brands];
 export default function BrandSection() {
   return (
     <section className="bg-[#070707] w-full py-10 overflow-hidden">
+      <p className="text-center text-[#888] text-sm md:text-[18px] font-neue font-medium mb-6 px-4">
+        Expertos en instalación digital en puertas de seguridad y puertas blindadas como:
+      </p>
       <div className="relative flex">
         <div className="animate-marquee flex items-center gap-24 whitespace-nowrap will-change-transform">
           {marqueeItems.map((brand, i) => (

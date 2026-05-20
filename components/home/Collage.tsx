@@ -30,23 +30,20 @@ export default function CollageSection() {
 
         {/* Header */}
         <div className="text-center mb-12 md:mb-14">
-          <span className="text-sm  font-neue font-medium text-[#1a1a1a] tracking-widest uppercase">
-            iShkel
-          </span>
           <h2 className="text-3xl md:text-4xl font-neue font-medium text-[#1a1a1a] mt-3 mb-4 leading-tight">
-            Seguridad inteligente{' '}
+            Projectos{' '}
             <span
               className="bg-clip-text text-transparent"
               style={{
                 backgroundImage: 'linear-gradient(90deg, #626262 0%, #1a1a1a 50%, #626262 100%)',
               }}
             >
-              para su hogar
+              iShkel
             </span>
           </h2>
           <p className="text-[15px] text-[#555] leading-relaxed max-w-xl mx-auto">
-            Cada cerradura iShkel es una obra de ingeniería diseñada para
-            ofrecer seguridad inquebrantable con una experiencia de usuario excepcional.
+            Somos la elección predilecta en Bogotá, Medellín, y el eje Cafetero 
+            para quienes buscan reemplazar sus chapas tradicionales por la tecnologia de iShkel elegancia y control total.
           </p>
         </div>
 

@@ -3,7 +3,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { createPortal } from 'react-dom';
-
+// this is just the way to format the data we are getting from shopify - we could also do this in the api route, but I prefer to keep it here since it's more related to the UI and we can easily adjust it if the API changes without having to touch the backend code.
 interface CartItem {
   id: string;
   quantity: number;
@@ -38,7 +38,7 @@ interface Cart {
   };
   lines: CartItem[];
 }
-
+// we create a separate interface for the props of the CartDrawer component, this way we can easily see what props it expects and we can also easily adjust it if we need to add more props in the future.
 interface CartDrawerProps {
   isOpen: boolean;
   onClose: () => void;

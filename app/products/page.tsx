@@ -262,7 +262,7 @@ export default function ProductsPage() {
         />
         <div className="absolute bottom-12 left-8 md:left-16 lg:left-24">
           <h2 className="text-[#f2f2f2] text-[32px] md:text-[42px] font-normal tracking-[-0.64px] leading-[1.2] max-w-91">
-            Seguridad inteligente para su hogar
+            Ingenieria y seguridad biometrica 3d por primera vez en Colombia.
           </h2>
         </div>
       </section>

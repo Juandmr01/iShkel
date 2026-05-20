@@ -11,21 +11,20 @@ export default function FounderNote() {
 
       <div className="max-w-4xl mx-auto text-center relative z-10">
         {/* Quote */}
-        <blockquote className="text-2xl md:text-4xl lg:text-4xl font-neue font-medium leading-tight mb-8">
-          <span className="text-white">&quot;Ingeniería de </span>
-          <span className="text-[#888]">Seguridad </span>
-          <span className="text-white">que se Siente como lujo&quot;</span>
-          <span className="text-[#888]"> Cerraduras Biométricas</span>
-          <span className="text-white"> | </span>
-          <span className="text-[#888]">Instalación </span>
-          <span className="text-white">Certificada | </span>
-          <span className="text-[#888]">Soporte </span>
-          <span className="text-white">24/7</span>
+        <blockquote className="font-neue font-medium leading-tight mb-8 space-y-4">
+          <p className="text-2xl md:text-4xl lg:text-3xl">
+            <span className="text-white">&quot;El lujo es la invisibilidad de la preocupación. Hemos fusionado la robustez del </span>
+            <span className="text-[#888]">Zamak </span>
+            <span className="text-white">con la precisión del </span>
+            <span className="text-[#888]">reconocimiento facial 3D </span>
+            <span className="text-white">para que su identidad sea la única llave que necesite.&quot;</span>
+          </p>
+       
         </blockquote>
 
         {/* Attribution */}
         <p className="text-[#888] text-sm md:text-base font-medium">
-          Fundador de iShkell
+          Fundador de iShkel
         </p>
       </div>
     </section>

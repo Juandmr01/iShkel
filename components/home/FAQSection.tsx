@@ -6,33 +6,35 @@ interface FAQItem {
   id: number;
   question: string;
   answer: string;
+  videoLink?: string;
 }
 
 const faqs: FAQItem[] = [
   {
     id: 1,
-    question: 'Que es iShkel Pro',
-    answer: 'iShkel Pro es nuestro programa exclusivo para constructores y desarrolladores inmobiliarios que ofrece precios preferenciales, soporte prioritario y asesoría personalizada para proyectos de gran escala.',
+    question: '¿Tienen servicio de instalación?',
+    answer: 'Sí, iShkel maneja instalación en todas las ciudades de Colombia, con sedes virtuales 100% directas de la marca en ciudades como Bogotá, Medellín, Pereira, Manizales y Armenia.',
   },
   {
     id: 2,
-    question: 'Cuanto se demora la instalacion de mi cerradura',
-    answer: 'La instalación típica toma entre 1-2 horas dependiendo del tipo de puerta. Nuestros técnicos certificados se encargan de todo el proceso, incluyendo la configuración inicial de la app.',
+    question: '¿Cómo sé si me sirve la serie Fx en mi puerta?',
+    answer: 'Si estás en Bogotá puedes agendar una visita previa y evaluaremos tu puerta a fondo, llevando la chapa digital para que puedas ver cómo se vería antes de instalar. Si estás fuera de Bogotá, analizaremos tu puerta a través de nuestros sistemas digitales.',
   },
   {
     id: 3,
-    question: 'Que garantía tienen las cerraduras?',
-    answer: 'Todas nuestras cerraduras incluyen garantía extendida de hasta 20 meses que cubre defectos de fabricación y problemas técnicos. Además, ofrecemos soporte técnico 24/7.',
+    question: '¿Son seguras?',
+    answer: 'No lo respondemos nosotros — nuestros sistemas de encriptación, materiales y pruebas que la marca ha hecho y documentado lo comprueban.',
+    videoLink: '#',
   },
   {
     id: 4,
-    question: 'Puedo instalar la cerradura yo mismo?',
-    answer: 'Recomendamos la instalación profesional para garantizar el correcto funcionamiento. Sin embargo, ofrecemos guías detalladas y soporte por videollamada si prefieres hacerlo tú mismo.',
+    question: '¿La visita tiene costo?',
+    answer: 'La visita previa es sin costo. Solo disponible en Bogotá y alrededores.',
   },
   {
     id: 5,
-    question: 'Que pasa si se va la luz?',
-    answer: 'Nuestras cerraduras cuentan con batería de respaldo que dura hasta 18 meses. Además, todas incluyen una llave mecánica de emergencia para acceso sin batería.',
+    question: '¿Cuántas huellas reconoce?',
+    answer: 'iShkel piensa en familias y contextos masivos. Si tu puerta tiene que pasar más de 150 personas, las reconoce sin problema.',
   },
 ];
 
@@ -128,6 +130,16 @@ export default function FAQSection() {
                     <p className="text-black/80 text-sm md:text-[14px] leading-relaxed">
                       {faq.answer}
                     </p>
+                    {faq.videoLink && (
+                      <a
+                        href={faq.videoLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 mt-3 text-sm font-medium text-black underline underline-offset-2 hover:opacity-60 transition-opacity"
+                      >
+                        Ver video de pruebas →
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
