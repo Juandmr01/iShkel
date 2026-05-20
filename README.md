@@ -1,36 +1,149 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# iShkel — Smart Security Locks for Colombia
 
-## Getting Started
+> Headless e-commerce storefront for a smart-lock brand entering the Colombian market. Custom Figma-designed frontend, Shopify Storefront API backend, built with Next.js, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+**🔗 Live site:** [ishkel.com](https://ishkel.com)
+
+---
+
+## Screenshots
+
+### Desktop
+
+![iShkel hero section showing the smart lock product](docs/screenshots/heroSection.png)
+
+![Product page with cart drawer open showing variant selection](docs/screenshots/Product_page_cart.png)
+
+![Comparison table of three iShkel smart lock models on dark background](docs/screenshots/Comparison_table.png)
+
+![FAQ accordion section with expanded question](docs/screenshots/FAQ.png)
+
+### Mobile
+
+![Mobile view of the iShkel hero section](docs/screenshots/Mobile%20hero.png)
+
+---
+
+## About the Project
+
+iShkel is a real commercial e-commerce brand selling smart security locks in Colombia. This repository contains the storefront — a fully custom frontend built from a Figma design and connected to Shopify as a headless commerce backend.
+
+The project demonstrates end-to-end product development: design translation, component architecture, third-party API integration, state management, and production deployment.
+
+---
+
+## Tech Stack
+
+**Frontend**
+- [Next.js](https://nextjs.org/) (App Router) — React framework with server-side rendering
+- [TypeScript](https://www.typescriptlang.org/) — type-safe development
+- [Tailwind CSS](https://tailwindcss.com/) — utility-first styling
+- [Framer Motion](https://www.framer.com/motion/) — animations and scroll-driven effects
+- React Context — cart and global state
+
+**Backend / Commerce**
+- [Shopify Storefront API](https://shopify.dev/docs/api/storefront) — products, inventory, checkout
+- GraphQL — queries use Shopify's `nodes` syntax
+
+**Design & Tooling**
+- Figma — source of truth for design
+- Vercel — hosting and CI/CD
+- Git / GitHub — version control
+
+---
+
+## Key Features
+
+- **Pixel-accurate Figma → Code translation** with custom components: Hero, ProductShowroom, Collage, FounderQuoteSection, TestimonialSection (bento grid), AutoridadSection (animated SVG wave divider), ComparisonTable, FAQ accordion.
+- **Responsive design** across desktop, tablet, and mobile breakpoints.
+- **Shopify integration**: product fetching, cart context, drawer UI, add-to-cart flow, and checkout redirect.
+- **Localised for Colombia**: all copy in Spanish, COP currency formatting, local market references.
+- **Custom design system**: alternating black (`#000000` / `#070707`) and light (`#F3F3F3` / `#E8E8E8`) sections, 15px border radius, frosted glass UI (`bg-white/25 backdrop-blur-xl`), Neue Montreal typography.
+
+---
+
+## Architecture
+
+```
+Next.js (App Router) ──► Shopify Storefront API (GraphQL)
+        │                          │
+        ├── React Context           └── Products, Variants, Cart, Checkout
+        │   (CartContext)
+        │
+        ├── Server Components       Vercel
+        └── Client Components ◄── Deployment & Edge
+```
+
+**Key files:**
+- `lib/shopify.ts` — Storefront API client and GraphQL queries
+- `context/CartContext.tsx` — global cart state
+- `components/` — reusable UI primitives (CartDrawer, ProductCard, and section components)
+- `app/` — Next.js App Router pages and layouts
+
+---
+
+## Running Locally
+
+### Prerequisites
+- Node.js 18+
+- A Shopify store with Storefront API access
+
+### Setup
+
+```bash
+git clone https://github.com/juandmr01/ishkel.git
+cd ishkel
+npm install
+```
+
+Create a `.env.local` file in the project root:
+
+```
+NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN=your-store.myshopify.com
+NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN=your_storefront_access_token
+```
+
+> ⚠️ On Windows, create `.env.local` directly in VS Code (not via terminal redirection) to avoid UTF-16 encoding issues that break Next.js env parsing.
+
+### Run
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Engineering Notes
 
-## Learn More
+A few decisions and trade-offs worth flagging:
 
-To learn more about Next.js, take a look at the following resources:
+- **Headless over Hydrogen.** Chose Next.js + Storefront API over Shopify's Hydrogen framework for full control over routing, design, and the ability to extend beyond e-commerce later.
+- **`nodes` over `edges` in GraphQL.** Shopify's newer Storefront API exposes `products { nodes { ... } }` directly, which is cleaner than the older edges/cursors pattern when pagination isn't needed.
+- **Server components by default.** Client components only where interactivity requires it (cart, drawers, forms) to keep the bundle lean.
+- **Tailwind with custom utility classes** for repeated patterns (e.g. `.gradient-text-gold`) rather than inline style repetition.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Roadmap
 
-## Deploy on Vercel
+- [ ] Product detail pages with variant selection
+- [ ] Checkout flow polish and Spanish-language confirmation states
+- [ ] Customer accounts and order history
+- [ ] Localised SEO metadata for Colombian search
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## About the Developer
+
+Built by **Diego Martinez** — Computer Science and Mechatronics Engineering student at QUT (Brisbane, Australia), based in Australia, building for the Colombian market.
+
+- LinkedIn: [linkedin.com/in/juandmr11](https://www.linkedin.com/in/juandmr11)
+- Email: juandmartinez1001@gmail.com
+
+---
+
+## License
+
+Proprietary. All rights reserved. This codebase is shared publicly for portfolio purposes; the iShkel brand, design, and product copy are not licensed for reuse.
